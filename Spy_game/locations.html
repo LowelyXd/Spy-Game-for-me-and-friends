@@ -54,7 +54,7 @@
         }
 
         function startGame() {
-            const locations = ['Пляж', 'Банк', 'Школа', 'Ресторан', 'Больница', 'Космическая станция'];
+            const locations = ['Пляж', 'Банк', 'Школа', 'Ресторан', 'Больница', 'Космическая станция','Военная баазa','Аэропорn','Колхоз','Университет','Деревня','Ресторан','Стадион'];
             const randomLocation = locations[Math.floor(Math.random() * locations.length)];
             document.getElementById('playerLocation').textContent = randomLocation;
         }
@@ -73,6 +73,7 @@
                         <li class="player-item">Игрок 2 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
                         <li class="player-item">Игрок 3 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
                         <li class="player-item">Игрок 4 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
+                        <li class="player-item">Игрок 5 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
                     </ul>
                 </div>
                 
@@ -85,6 +86,13 @@
                         <li>Ресторан</li>
                         <li>Больница</li>
                         <li>Космическая станция</li>
+                        <li>Военная бааз</li>
+                        <li>Аэропорn</li>
+                        <li>Колхоз</li>
+                        <li>Университет</li>
+                        <li>Деревня</li>
+                        <li>Ресторан</li>
+                        <li>Стадион</li>
                     </ul>
                 </div>
             </div>
