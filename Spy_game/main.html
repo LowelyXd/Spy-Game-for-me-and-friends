@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Настольная игра "Шпион"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .button {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function startGame() {
+            window.location.href = 'locations.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Настольная игра "Шпион"</h1>
+        <p>Добро пожаловать в игру "Шпион"! Это увлекательная игра на дедукцию и блеф, где один из игроков - шпион, который пытается понять, где находятся остальные игроки, в то время как другие пытаются вычислить шпиона.</p>
+        <h2>Правила игры:</h2>
+        <ol>
+            <li>Все игроки, кроме шпиона, знают локацию.</li>
+            <li>Шпион должен понять, где находятся игроки, не выдав себя.</li>
+            <li>Остальные игроки должны вычислить шпиона.</li>
+            <li>Игроки по очереди задают друг другу вопросы о локации.</li>
+            <li>В любой момент игрок может обвинить другого в том, что он шпион.</li>
+            <li>Если шпион угадывает локацию или его не разоблачают - он побеждает.</li>
+        </ol>
+        <a href="#" class="button" onclick="startGame()">Начать игру</a>
+    </div>
+</body>
+</html>
