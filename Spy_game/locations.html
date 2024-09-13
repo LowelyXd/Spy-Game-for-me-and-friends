@@ -51,17 +51,66 @@
     <script>
         let timer;
         let timeLeft = 300; // 5 minutes in seconds
+        let spyIndex;
+        let votes = [0, 0, 0, 0, 0];
     
         function startVoting() {
-            alert('Голосование началось!');
-            // Implement voting logic here
+            if (document.getElementById('start-voting-button').disabled) {
+                alert('Сначала нужно начать игру!');
+                return;
+            }
+            document.querySelectorAll('.vote-button').forEach(button => {
+                button.style.display = 'inline-block';
+            });
+        }
+    
+        function vote(playerIndex) {
+            votes[playerIndex]++;
+            document.getElementById(`votes-${playerIndex}`).textContent = votes[playerIndex];
+            
+            if (votes[playerIndex] >= 4) {
+                endGame(playerIndex);
+            }
+        }
+    
+        function endGame(accusedPlayerIndex) {
+            clearInterval(timer);
+            if (accusedPlayerIndex === spyIndex) {
+                alert('Игра окончена! Шпион пойман!');
+            } else {
+                alert('Игра окончена! Шпион победил!');
+            }
         }
     
         function startGame() {
             resetGame();
             const locations = ['Пляж', 'Банк', 'Школа', 'Ресторан', 'Больница', 'Космическая станция','Военная баазa','Аэропорn','Колхоз','Университет','Деревня','Ресторан','Стадион','Завод','Кинотеатр'];
             const randomLocation = locations[Math.floor(Math.random() * locations.length)];
-            document.getElementById('playerLocation').textContent = randomLocation;
+            
+            spyIndex = Math.floor(Math.random() * 5);
+            
+            const players = document.querySelectorAll('.player-item');
+            players.forEach((player, index) => {
+                if (index === spyIndex) {
+                    player.dataset.role = 'spy';
+                    player.querySelector('.player-location').textContent = 'Вы шпион!';
+                } else {
+                    player.dataset.role = 'citizen';
+                    player.querySelector('.player-location').textContent = randomLocation;
+                }
+            });
+            
+            document.getElementById('playerLocation').textContent = spyIndex === 4 ? 'Вы шпион!' : randomLocation;
+            
+            votes = [0, 0, 0, 0, 0];
+            document.querySelectorAll('.vote-count').forEach(count => {
+                count.textContent = '0';
+            });
+            document.querySelectorAll('.vote-button').forEach(button => {
+                button.style.display = 'none';
+            });
+            
+            document.getElementById('start-voting-button').disabled = false;
             
             startTimer();
         }
@@ -95,17 +144,31 @@
 </head>
 <body>
     <div class="container">
-
         <div class="game-container">
             <div class="game-info">
                 <div class="players">
                     <h2>Игроки</h2>
                     <ul>
-                        <li class="player-item">Игрок 1 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
-                        <li class="player-item">Игрок 2 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
-                        <li class="player-item">Игрок 3 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
-                        <li class="player-item">Игрок 4 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
-                        <li class="player-item">Игрок 5 <button onclick="startVoting()" class="button vote-button">Начать голосование</button></li>
+                        <li class="player-item">Игрок 1 <span class="player-location"></span> 
+                            <button onclick="vote(0)" class="button vote-button" style="display: none;">Голосовать</button>
+                            <span class="vote-count" id="votes-0">0</span>
+                        </li>
+                        <li class="player-item">Игрок 2 <span class="player-location"></span> 
+                            <button onclick="vote(1)" class="button vote-button" style="display: none;">Голосовать</button>
+                            <span class="vote-count" id="votes-1">0</span>
+                        </li>
+                        <li class="player-item">Игрок 3 <span class="player-location"></span> 
+                            <button onclick="vote(2)" class="button vote-button" style="display: none;">Голосовать</button>
+                            <span class="vote-count" id="votes-2">0</span>
+                        </li>
+                        <li class="player-item">Игрок 4 <span class="player-location"></span> 
+                            <button onclick="vote(3)" class="button vote-button" style="display: none;">Голосовать</button>
+                            <span class="vote-count" id="votes-3">0</span>
+                        </li>
+                        <li class="player-item">Игрок 5 <span class="player-location"></span> 
+                            <button onclick="vote(4)" class="button vote-button" style="display: none;">Голосовать</button>
+                            <span class="vote-count" id="votes-4">0</span>
+                        </li>
                     </ul>
                 </div>
                 
@@ -141,6 +204,7 @@
 
         <h2>Начать игру</h2>
         <button onclick="startGame()" class="button">Играть онлайн</button>
+        <button onclick="startVoting()" id="start-voting-button" class="button" disabled>Начать голосование</button>
     </div>
 </body>
 </html>
