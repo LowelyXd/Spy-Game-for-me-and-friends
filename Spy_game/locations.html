@@ -46,6 +46,21 @@
         }
         .player-item {
             margin-bottom: 5px;
+        
+        }
+        .locations table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .locations td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        
+        .locations tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
     </style>
     <script>
@@ -174,24 +189,35 @@
                 
                 <div class="locations">
                     <h2>Локации</h2>
-                    <ul>
-                        <li>Пляж</li>
-                        <li>Банк</li>
-                        <li>Школа</li>
-                        <li>Ресторан</li>
-                        <li>Больница</li>
-                        <li>Космическая станция</li>
-                        <li>Военная бааз</li>
-                        <li>Аэропорn</li>
-                        <li>Колхоз</li>
-                        <li>Университет</li>
-                        <li>Деревня</li>
-                        <li>Ресторан</li>
-                        <li>Стадион</li>
-                        <li>Завод</li>
-                        <li>Кинотеатр</li>
-                    </ul>
+                    <table>
+                        <tr>
+                            <td>Пляж</td>
+                            <td>Банк</td>
+                            <td>Школа</td>
+                        </tr>
+                        <tr>
+                            <td>Ресторан</td>
+                            <td>Больница</td>
+                            <td>Космическая станция</td>
+                        </tr>
+                        <tr>
+                            <td>Военная база</td>
+                            <td>Аэропорт</td>
+                            <td>Колхоз</td>
+                        </tr>
+                        <tr>
+                            <td>Университет</td>
+                            <td>Деревня</td>
+                            <td>Стадион</td>
+                        </tr>
+                        <tr>
+                            <td>Завод</td>
+                            <td>Кинотеатр</td>
+                            <td></td>
+                        </tr>
+                    </table>
                 </div>
+                
             </div>
             
             <div class="player-info">
